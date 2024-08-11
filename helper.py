@@ -44,9 +44,19 @@ def plot_results(results, times, rates):
     # axs[0, 1].lines[0].set_color('k')
 
     # Average Waiting Time
+    # avg_waiting_time = np.array(results["Average Waiting Time"])
+    # valid_indices = ~np.isnan(avg_waiting_time)
+    # axs[0, 1].plot(np.arange(len(avg_waiting_time))[valid_indices], avg_waiting_time[valid_indices], color='k', marker='o')
+    # axs[0, 1].set_title("Average Waiting Time")
+    # axs[0, 1].set_xlabel("Time (minutes)")
+    # axs[0, 1].set_ylabel("Minutes")
+    # axs[0, 1].set_xticks([0, 120, 240, 360, 480, 600, 720])
+    # axs[0, 1].set_xticklabels(convert_to_time_label([0, 120, 240, 360, 480, 600, 720]))
+
+    # Average Waiting Time
     avg_waiting_time = np.array(results["Average Waiting Time"])
     valid_indices = ~np.isnan(avg_waiting_time)
-    axs[0, 1].plot(np.arange(len(avg_waiting_time))[valid_indices], avg_waiting_time[valid_indices], color='k', marker='o')
+    axs[0, 1].step(np.arange(len(avg_waiting_time))[valid_indices], avg_waiting_time[valid_indices], color='k', where='mid')
     axs[0, 1].set_title("Average Waiting Time")
     axs[0, 1].set_xlabel("Time (minutes)")
     axs[0, 1].set_ylabel("Minutes")
